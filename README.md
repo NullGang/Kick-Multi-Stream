@@ -1,4 +1,4 @@
-# Bot Multistream Twitch GUI
+# Bot Multistream Kick GUI
 
 > Interfaz gráfica para transmisiones simultáneas a Twitch usando Python + PyQt6 y FFmpeg.
 
@@ -6,7 +6,7 @@
 
 Una aplicación sencilla de escritorio (GUI) para Windows que te permite:
 
-- Hacer **multistreaming** a varios canales de Twitch a la vez.
+- Hacer **multistreaming** a varios canales de Kick a la vez.
 - Elegir la calidad de video (desde 160p hasta 1080p).
 - Seleccionar el archivo de video que quieres transmitir.
 - Agregar música opcional al stream (o sin música).
