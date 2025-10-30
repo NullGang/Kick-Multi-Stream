@@ -14,7 +14,7 @@ from PyQt6.QtMultimediaWidgets import QVideoWidget
 class MultiStreamBotGUI(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Bot Multistream de Twitch v1.0.0")
+        self.setWindowTitle("Bot Multistream de Kick v1.0.0")
         self.keys = []
         self.file_path = None
         self.music_path = None
@@ -204,12 +204,12 @@ class MultiStreamBotGUI(QWidget):
             cmd += ['-c:v', 'libx264', '-preset', 'veryfast', '-b:v', bitrate,
                     '-maxrate', bitrate, '-bufsize', buf, '-pix_fmt', 'yuv420p',
                     '-g', '50', '-c:a', 'aac', '-b:a', '160k', '-ac', '2', '-ar', '44100',
-                    '-f', 'flv', '-shortest', f"rtmp://live.twitch.tv/app/{key}"]
+                    '-f', 'flv', '-shortest', f"rtmps://fa723fc1b171.global-contribute.live-video.net/rtmp/{key}"]
         else:
             cmd += ['-c:v', 'libx264', '-preset', 'veryfast', '-b:v', bitrate,
                     '-maxrate', bitrate, '-bufsize', buf, '-pix_fmt', 'yuv420p',
                     '-g', '50', '-an',
-                    '-f', 'flv', f"rtmp://live.twitch.tv/app/{key}"]
+                    '-f', 'flv', f"rtmps://fa723fc1b171.global-contribute.live-video.net/rtmp/{key}"]
 
         try:
             subprocess.Popen(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
@@ -227,3 +227,4 @@ if __name__ == '__main__':
     window.resize(800, 600)
     window.show()
     sys.exit(app.exec())
+
