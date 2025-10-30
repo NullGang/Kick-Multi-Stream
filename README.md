@@ -1,6 +1,6 @@
 # Bot Multistream Kick GUI
 
-> Interfaz gráfica para transmisiones simultáneas a Twitch usando Python + PyQt6 y FFmpeg.
+> Interfaz gráfica para transmisiones simultáneas a Kick usando Python + PyQt6 y FFmpeg.
 
 ## 🚀 ¿Qué es esto?
 
