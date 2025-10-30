@@ -17,7 +17,7 @@ Una aplicación sencilla de escritorio (GUI) para Windows que te permite:
 
 ## 📷 Captura de pantalla
 
-<img width="817" height="629" alt="image" src="https://github.com/user-attachments/assets/46b0ea05-cc0f-4cbf-bcdb-ae661f379d32" />
+<img width="817" height="629" alt="image" src="https://github.com/NullGang/Kick-Multi-Stream/blob/main/media/rVdVcKo.png?raw=true" />
 
 ---
 
