@@ -30,5 +30,5 @@ Una aplicación sencilla de escritorio (GUI) para Windows que te permite:
 - `PyQt6` (se instala con pip)
 
 ---
-Inspirado en https://github.com/Kichi779/Twitch-Multi-Stream 
-Codigo original de https://github.com/Kayy9961/Twitch-Multi-Stream
+- Inspirado en https://github.com/Kichi779/Twitch-Multi-Stream 
+- Codigo original de https://github.com/Kayy9961/Twitch-Multi-Stream
