@@ -11,6 +11,7 @@ from PyQt6.QtCore import Qt, QUrl, QTimer
 from PyQt6.QtMultimedia import QMediaPlayer, QAudioOutput
 from PyQt6.QtMultimediaWidgets import QVideoWidget
 
+
 class MultiStreamBotGUI(QWidget):
     def __init__(self):
         super().__init__()
@@ -52,7 +53,7 @@ class MultiStreamBotGUI(QWidget):
 
         file_layout = QHBoxLayout()
         self.select_btn = QPushButton("Seleccionar video")
-        self.select_btn.setStyleSheet("background-color:#8a2be2; color:white;")
+        self.select_btn.setStyleSheet("background-color:#1be354; color:black;")
         self.select_btn.clicked.connect(self.choose_file)
         file_layout.addWidget(self.select_btn)
         self.file_label = QLabel("Ningún archivo seleccionado")
@@ -62,9 +63,15 @@ class MultiStreamBotGUI(QWidget):
 
         music_layout = QHBoxLayout()
         self.select_music_btn = QPushButton("Seleccionar música (opcional)")
-        self.select_music_btn.setStyleSheet("background-color:#6a5acd; color:white;")
+        self.select_music_btn.setStyleSheet("background-color:#1db548; color:black;")
         self.select_music_btn.clicked.connect(self.choose_music)
         music_layout.addWidget(self.select_music_btn)
+
+        self.mute_button = QPushButton("🔇 Mute")
+        self.mute_button.setStyleSheet("background-color:#555; color:black;")
+        self.mute_button.clicked.connect(self.toggle_mute)
+        music_layout.addWidget(self.mute_button)
+
         self.music_label = QLabel("Ningún archivo seleccionado")
         self.music_label.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
         music_layout.addWidget(self.music_label)
@@ -82,10 +89,10 @@ class MultiStreamBotGUI(QWidget):
 
         ss_layout = QHBoxLayout()
         self.start_btn = QPushButton("Iniciar transmisiones")
-        self.start_btn.setStyleSheet("background-color:#8a2be2; color:white;")
+        self.start_btn.setStyleSheet("background-color:#33d624; color:black;")
         self.start_btn.clicked.connect(self.start_streams)
         self.stop_btn = QPushButton("Detener todo")
-        self.stop_btn.setStyleSheet("background-color:#8a2be2; color:white;")
+        self.stop_btn.setStyleSheet("background-color:#33d624; color:black;")
         self.stop_btn.clicked.connect(self.stop_streams)
         ss_layout.addWidget(self.start_btn)
         ss_layout.addWidget(self.stop_btn)
@@ -135,6 +142,17 @@ class MultiStreamBotGUI(QWidget):
             self.music_path = None
             self.music_label.setText("Ningún archivo seleccionado")
             self.log("🎵 Música no seleccionada (opcional)")
+
+    def toggle_mute(self):
+        is_muted = self.audio_output.isMuted()
+        self.audio_output.setMuted(not is_muted)
+        if not is_muted:
+            self.mute_button.setText("🔊 Unmute")
+            self.log("🔇 Audio silenciado")
+        else:
+            self.mute_button.setText("🔇 Mute")
+            self.log("🔊 Audio activado")
+
 
     def start_streams(self):
         if not self.file_path:
@@ -194,7 +212,7 @@ class MultiStreamBotGUI(QWidget):
         QApplication.quit()
 
     def _stream_thread(self, key: str, duration: str, bitrate: str):
-        buf = str(int(bitrate.replace('k','')) * 2) + 'k'
+        buf = str(int(bitrate.replace('k', '')) * 2) + 'k'
         cmd = [
             'ffmpeg', '-stream_loop', '-1', '-re', '-t', duration,
             '-i', self.file_path
@@ -221,10 +239,10 @@ class MultiStreamBotGUI(QWidget):
         subprocess.run(['taskkill', '/f', '/im', 'ffmpeg.exe'], stdout=subprocess.DEVNULL)
         self.log("⏹️ Todas las transmisiones detenidas")
 
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     window = MultiStreamBotGUI()
     window.resize(800, 600)
     window.show()
     sys.exit(app.exec())
-
